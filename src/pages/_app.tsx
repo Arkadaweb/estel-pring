@@ -59,6 +59,14 @@ export default function App({Component, pageProps}: AppProps) {
                     name="viewport"
                     content="width=device-width, user-scalable=no"
                 />
+                <link
+                    rel="icon"
+                    href="/favicon.png"
+                    sizes="32x32"
+                    type="image/x-icon"
+                />
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
             </Head>
             <ConfigProvider theme={antdTheme}>
                 <Provider store={store}>

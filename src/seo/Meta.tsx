@@ -32,7 +32,6 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({
                         </>
                         : <title>{title}</title>
                 }
-                <link rel="icon" href="../../public/favicon.png" />
             </Head>
             <main>
                 {children}
