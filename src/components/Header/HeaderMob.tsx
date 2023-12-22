@@ -11,6 +11,7 @@ import BucketIcon from "../../assets/icons/header/BucketIcon";
 import {useRouter} from "next/router";
 import {useAppSelector} from "../../store/store";
 import {formatPhoneNumber} from "../../help/formatPhoneNumber";
+import ArrowToBottom from "../../assets/icons/common/ArrowToBottom";
 
 const HeaderMob: FC<PropsWithChildren<any>> = ({
                                                    categories = [],
@@ -22,6 +23,7 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
     const {products} = useAppSelector(state => state.bucket)
 
     const [isOpenNav, setIsOpenNav] = useState<boolean>(false)
+    const [isOpenCatalog, setIsOpenCatalog] = useState<boolean>(false)
 
     const headerMobRef = useRef<any>(null);
 
@@ -114,21 +116,30 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
                         />
                     </Link>
                 </div>
+                <div className="header-mob-side-top-nav-bottom">
+                    <h4 onClick={() =>setIsOpenCatalog(!isOpenCatalog)}>
+                        Каталог
+                        <ArrowToBottom color={'#000'}/>
+                    </h4>
+                    <div className={`header-mob-side-top-nav-bottom-drop ${isOpenCatalog && 'category-open'}`}>
+                        <p onClick={() => onSelectCategory(`/catalog`)}>
+                            Все
+                        </p>
+                        {
+                            categories?.map((item: any) =>
+                                <p key={item?.id} onClick={() => onSelectCategory(`/catalog/${item.slug}`)}>
+                                    {item?.name}
+                                </p>
+                            )
+                        }
+                    </div>
+                </div>
                 <div className="header-mob-side-top-nav">
                     {
                         navTop?.map((item: any) =>
                             <Link href={item.path}>
                                 {item?.title}
                             </Link>
-                        )
-                    }
-                </div>
-                <div className="header-mob-side-top-nav-bottom">
-                    {
-                        categories?.map((item: any) =>
-                            <p key={item?.id} onClick={() => onSelectCategory(`/catalog/${item.slug}`)}>
-                                {item?.name}
-                            </p>
                         )
                     }
                 </div>

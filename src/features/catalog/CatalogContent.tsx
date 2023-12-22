@@ -78,7 +78,7 @@ const CatalogContent: FC<PropsWithChildren<any>> = ({
         if (currentQuery?.category) {
             delete currentQuery.category
         }
-        const queryStringified = queryString.stringify({...currentQuery});
+        const queryStringified = queryString.stringify({...currentQuery, page: 1});
         router.push(`${'/catalog/' + item?.slug}?${queryStringified}`);
         setSelectedCategory(item)
     }

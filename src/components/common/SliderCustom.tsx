@@ -64,7 +64,6 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
                     Похожие товары
                 </h3>
                 {
-                    elements?.length > 4 &&
                     <div className="brand-section-content-top-buttons">
                         <button
                             className={`brand-section-left ${isPrevButtonDisabled ? 'disabled-slicer-popular' : ''}`}

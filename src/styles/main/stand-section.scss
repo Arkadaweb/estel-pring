@@ -103,6 +103,7 @@
                 &:hover {
                     background-color: $blueWhite;
                     cursor: pointer;
+                    z-index: 1;
                 }
 
                 h4 {

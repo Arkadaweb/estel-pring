@@ -19,6 +19,10 @@
 
             .slick-list{
                 height: 456px !important;
+
+                @media(max-width: 1024px) {
+                    height: 150px !important;
+                }
             }
 
             &-img {
