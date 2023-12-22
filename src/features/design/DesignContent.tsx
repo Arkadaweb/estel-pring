@@ -9,9 +9,6 @@ const DesignContent: FC<PropsWithChildren<any>> = ({
                                mainData
                            }) => {
 
-    console.log(mainData)
-    console.log(mainData?.acf?.design)
-
     const consultationU = useConsultation()
 
     const breadCrumbs = [
@@ -35,9 +32,9 @@ const DesignContent: FC<PropsWithChildren<any>> = ({
                 <div className="design-content">
                     <BreadCrumbs elements={breadCrumbs}/>
 
-                    <h4>
+                    <h1>
                         Дизайн
-                    </h4>
+                    </h1>
 
                     <p dangerouslySetInnerHTML={{__html: mainData?.content?.rendered || ''}}/>
 
@@ -51,17 +48,17 @@ const DesignContent: FC<PropsWithChildren<any>> = ({
                     {/*    (фотобанки, лицензии на использование шрифтов и т.д.).*/}
                     {/*</p>*/}
 
-                    <h5>
+                    <h2>
                         {mainData?.acf?.design?.title}
-                    </h5>
+                    </h2>
 
                     <div className="design-content-items">
                         {
                             mainData?.acf?.design?.services?.map((item: any) =>
                                 <div className="design-content-items-item">
-                                    <h5>
+                                    <h3>
                                         {item?.title}
-                                    </h5>
+                                    </h3>
                                     <h6>
                                         {item?.price}
                                     </h6>

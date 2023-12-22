@@ -69,7 +69,7 @@ const IntroSection: FC<PropsWithChildren<any>> = ({
                                     {/*    /!*Мобильные стенды <br/>*!/*/}
                                     {/*    /!*для выставок и презентаций*!/*/}
                                     {/*</h2>*/}
-                                    <h2 dangerouslySetInnerHTML={{__html: item?.name || ''}}/>
+                                    <h1 dangerouslySetInnerHTML={{__html: item?.name || ''}}/>
                                     <p>
                                         {item?.short}
                                         {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod*/}

@@ -22,14 +22,12 @@ const SeoSection: FC<PropsWithChildren<any>> = ({
     return (
         <MaxWithLayout>
             <div className="seo">
-                <h4>
+                <h2>
                     {
                         seo?.title
                     }
-                </h4>
-                <p>
+                </h2>
                     <p dangerouslySetInnerHTML={{__html: replaceText(seo?.description) || ''}}/>
-                </p>
                 <ButtonCustom
                     onPress={() => setIsShowMore(!isShowMore)}
                     text={isShowMore ? 'Скрыть' : 'Показать больше'}

@@ -12,9 +12,8 @@ const StandSection: FC<PropsWithChildren<any>> = ({
         <div className="stand-section">
             <MaxWithLayout>
                 <div className="stand-section-content">
-                    <p className="stand-section-content-title"
+                    <h3 className="stand-section-content-title"
                        dangerouslySetInnerHTML={{__html: about?.title || ''}}/>
-
                     <div className="stand-section-content-line"/>
                     <div className="stand-section-content-items">
                         {

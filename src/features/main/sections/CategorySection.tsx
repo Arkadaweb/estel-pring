@@ -9,11 +9,11 @@ const CategorySection: FC<PropsWithChildren<any>> = ({
     return (
         <div className="category-section">
             <MaxWithLayout>
-                <div className="category-section-title">
+                <h3 className="category-section-title">
                     {
                         categories?.title
                     }
-                </div>
+                </h3>
                 <div className="category-section-items">
                     {
                         categories?.items?.map((item: any) =>

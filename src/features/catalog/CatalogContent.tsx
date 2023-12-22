@@ -112,9 +112,9 @@ const CatalogContent: FC<PropsWithChildren<any>> = ({
                             isWhite={true}
                         />
                     </div>
-                    <div className="catalog-content-title">
+                    <h1 className="catalog-content-title">
                         {selectedCategory?.name || 'Каталог продукции'}
-                    </div>
+                    </h1>
                 </MaxWithLayout>
             </div>
             <MaxWithLayout>

@@ -68,9 +68,9 @@ const SearchContent: FC<PropsWithChildren<any>> = ({
             <div className="search-content">
                 <BreadCrumbs elements={breadCrumbs}/>
 
-                <div className="search-content-title">
+                <h1 className="search-content-title">
                     Результаты поиска по запросу “{search}”
-                </div>
+                </h1>
 
                 <div className="search-content-find">
                     <FilterDropDown

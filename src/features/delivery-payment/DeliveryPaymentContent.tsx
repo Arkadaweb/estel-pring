@@ -24,9 +24,9 @@ const DeliveryPaymentContent: FC<PropsWithChildren<any>> = ({
             <div className="delivery-payment-content">
                 <BreadCrumbs elements={breadCrumbs}/>
 
-                <h3>
+                <h1>
                     Доставка и оплата
-                </h3>
+                </h1>
                 <p dangerouslySetInnerHTML={{__html: mainData?.content?.rendered || ''}}/>
 
                 {/*<h4>*/}

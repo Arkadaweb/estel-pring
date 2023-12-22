@@ -28,9 +28,9 @@ const ContactContent: FC<PropsWithChildren<any>> = ({
             <MaxWithLayout>
                 <div className="contacts">
                     <BreadCrumbs elements={breadCrumbs}/>
-                    <div className="contacts-title">
+                    <h1 className="contacts-title">
                         Контакты
-                    </div>
+                    </h1>
 
                     <div className="contacts-content">
                         <div className="contacts-content-info">

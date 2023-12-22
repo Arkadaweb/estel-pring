@@ -93,9 +93,9 @@ const OrderContent = () => {
         <MaxWithLayout>
             <div className="order-content">
                 <BreadCrumbs elements={breadCrumbs}/>
-                <h3>
+                <h1>
                     Оформление заказа
-                </h3>
+                </h1>
 
                 <div className="order-content-main">
                     <div className="order-content-main-form">
@@ -104,6 +104,9 @@ const OrderContent = () => {
                             form={form}
                             onFinish={onFinish}
                         >
+                            <h2>
+                                Данные покупателя
+                            </h2>
                             <div className="order-content-main-form-container">
                                 <Form.Item
                                     name="name"
@@ -214,6 +217,9 @@ const OrderContent = () => {
 
                             </div>
                             <div className="order-content-main-form-select">
+                                <h2>
+                                    Данные покупателя
+                                </h2>
                                 <div
                                     className="order-content-main-form-select-item"
                                     onClick={() => setSelectedType(0)}

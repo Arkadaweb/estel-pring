@@ -24,9 +24,9 @@ const ServicesContent: FC<PropsWithChildren<any>> = ({
             <MaxWithLayout>
                 <div className="services-content">
                     <BreadCrumbs elements={breadCrumbs}/>
-                    <h3>
+                    <h1>
                         Услуги
-                    </h3>
+                    </h1>
                     <table>
                         <thead>
                         <tr>

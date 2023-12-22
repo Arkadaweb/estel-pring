@@ -25,9 +25,9 @@ const LayoutRequirementsContent: FC<PropsWithChildren<any>> = ({
             <div className="layout-requirements-content">
                 <BreadCrumbs elements={breadCrumbs}/>
 
-                <h3>
+                <h1>
                     Требования к макетам
-                </h3>
+                </h1>
                 <p dangerouslySetInnerHTML={{__html: mainData?.content?.rendered || ''}}/>
 
                 {/*<p>*/}

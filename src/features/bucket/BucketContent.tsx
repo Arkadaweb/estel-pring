@@ -96,9 +96,9 @@ const BucketContent = () => {
                         ?
                         <>
                             <div className="bucket-content-top">
-                                <div className="bucket-content-top-title">
+                                <h1 className="bucket-content-top-title">
                                     Корзина <span>({products?.length} товара)</span>
-                                </div>
+                                </h1>
                                 <div className="bucket-content-top-clear" onClick={onClearBucket}>
                                     <ClearBucket/>
                                     Очистить корзину
@@ -125,9 +125,9 @@ const BucketContent = () => {
                         </>
                         :
                         <div className="bucket-empty">
-                            <h4>
+                            <h2>
                                 Ваша корзина пуста
-                            </h4>
+                            </h2>
                             <p>
                                 Выберите в каталоге нужный товар и нажмите “добавить в корзину”
                             </p>

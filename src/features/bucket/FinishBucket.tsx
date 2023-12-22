@@ -26,14 +26,14 @@ const FinishBucket: FC = () => {
         <MaxWithLayout>
             <div className="finish-bucket-content">
                 <BreadCrumbs elements={breadCrumbs}/>
-                <h4>
+                <h1>
                     Спасибо за заказ!
-                </h4>
+                </h1>
 
                 <div className="finish-bucket-content-order">
-                    <div className="finish-bucket-content-order-title">
+                    <h3 className="finish-bucket-content-order-title">
                         Заказ № 12345
-                    </div>
+                    </h3>
                     <div className="finish-bucket-content-order-items">
                         {
                             payment?.line_items?.map((item:any) =>
