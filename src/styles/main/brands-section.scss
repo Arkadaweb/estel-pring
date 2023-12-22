@@ -1,10 +1,41 @@
-.popular {
-    margin-top: 160px;
+.brand-section {
+    margin-top: 130px;
+    padding-bottom: 60px;
+
+    @media(max-width: 1024px) {
+        margin-top: 0px;
+    }
+
+    &-left{
+
+    }
+
+    &-right{
+        svg{
+            transform: rotate(180deg);
+        }
+    }
+
+    &-img{
+        position: relative;
+        max-width: 90%;
+        height: 194px;
+
+        @media(max-width: 450px){
+            max-width: 100%;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 1px solid $grey2;
+        }
+    }
 
     &-content {
 
         &-top {
-            padding: 0 20px;
 
             margin-bottom: 50px;
             display: flex;
@@ -13,13 +44,13 @@
 
 
             h3 {
-                font-family: $fontCor;
-                font-size: 40px;
-                font-weight: 500;
-                line-height: 48px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $black;
+                font-family: $fontFire;
+                font-size: 45px;
+                font-weight: 400;
+                line-height: 54px;
+                color: $grey;
+                text-transform: uppercase;
+
             }
 
             &-buttons {
@@ -33,21 +64,22 @@
                     align-items: center;
                     justify-content: center;
 
-                    width: 46px;
-                    height: 46px;
+                    width: 53px;
+                    height: 53px;
                     border-radius: 50%;
                     color: $white;
-                    background-color: $orange;
+                    background-color: $blueWhite;
 
                     &:disabled,
                     &[disabled] {
-                        background-color: #FF6A2833;
-                        color: #2C2C2C4D;
+                        background-color: $white;
+                        color: $grey;
+                        border: 1px solid $grey2
                     }
 
                     svg {
-                        width: 15px;
-                        height: 15px;
+                        width: 30px;
+                        height: 30px;
                     }
                 }
             }
@@ -55,15 +87,41 @@
     }
 }
 
+.brand-slider{
 
-@media (max-width: 1024px) {
-    .popular {
-        margin-top: 50px;
+    .slick-dots{
+        width: 100%;
+        margin-bottom: -50px;
+
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+
+        li{
+            margin: 0 !important;
+            width: 100%;
+            button{
+                width: 100%;
+
+                &::before{
+                    background-color: $blueWhite;
+                    height: 3px;
+                    width: 100%;
+                    content: '';
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 650px) {
-    .popular-content-top-buttons{
+    .brand-section-content-top{
+        h3{
+            text-align: center;
+        }
+    }
+    .brand-section-content-top-buttons{
         display: none;
     }
     .popular-content-top {

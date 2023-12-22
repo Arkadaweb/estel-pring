@@ -1,41 +1,49 @@
 import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import Link from "next/link";
-import ProfileIcon from "../../assets/icons/header/ProfileIcon";
-import FavoriteIcon from "../../assets/icons/header/FavoriteIcon";
-import BucketIcon from "../../assets/icons/header/BucketIcon";
-import LocationIcon from "../../assets/icons/header/LocationIcon";
 import MainSearch from "../common/MainSearch";
-import Image from "next/dist/client/legacy/image";
+import WhatsApp from "../../assets/icons/header/WhatsApp";
+import Viber from "../../assets/icons/header/Viber";
 
 import logo from '../../../public/logo.png'
-import SquaresIcon from "../../assets/icons/header/SquaresIcon";
+import Image from "next/dist/client/legacy/image";
+import BucketIcon from "../../assets/icons/header/BucketIcon";
+import CategoryDropDown from "./CategoryDropDown";
+import {useAppSelector} from "../../store/store";
+import {formatPhoneNumber} from "../../help/formatPhoneNumber";
 
-const Header: FC<PropsWithChildren<any>> = ({}) => {
+const Header: FC<PropsWithChildren<any>> = ({
+                                                categories,
+                                                contacts
+                                            }) => {
 
-
-    const [searchText, setSearchText] = useState('')
+    const {products} = useAppSelector(state => state.bucket)
 
     const navTop: any = [
         {
             id: 1,
-            path: '',
-            title: 'О компании'
+            path: '/services',
+            title: 'Услуги'
         },
         {
             id: 2,
-            path: '',
-            title: 'Горячая линия'
+            path: '/layout-requirements',
+            title: 'Требования к макетам'
         },
         {
             id: 3,
-            path: '',
-            title: 'Название страницы'
+            path: '/delivery-payment',
+            title: 'Доставка и оплата'
         },
         {
             id: 4,
-            path: '',
-            title: 'Название страницы'
+            path: '/design',
+            title: 'Дизайн'
+        },
+        {
+            id: 5,
+            path: '/contact',
+            title: 'Контакты'
         },
     ]
 
@@ -43,17 +51,6 @@ const Header: FC<PropsWithChildren<any>> = ({}) => {
         <div className="header">
             <MaxWithLayout>
                 <div className="header-top">
-                    <div className="header-top-left">
-                        <div className="header-top-left-location">
-                            <LocationIcon/>
-                            <p> Москва</p>
-                        </div>
-                        <div className="header-top-left-phone">
-                            <a href={'tel:+7 000 000 00 00'}>
-                                +7 000 000 00 00
-                            </a>
-                        </div>
-                    </div>
                     <div className="header-top-nav">
                         {
                             navTop?.map((item: any) =>
@@ -63,40 +60,73 @@ const Header: FC<PropsWithChildren<any>> = ({}) => {
                             )
                         }
                     </div>
+                    <div className="header-top-contact">
+                        <a href={`tel:${contacts?.phone}`}>
+                            {
+                                formatPhoneNumber(contacts?.phone)
+                            }
+                        </a>
+                        <div className="header-top-contact-social">
+                            {
+                                contacts?.socials?.map((item: any) =>
+                                    <a href={item.link}>
+                                        <Image
+                                            alt={'icon'}
+                                            title={'Иконка меседжера'}
+                                            width={25}
+                                            height={25}
+                                            src={item.icon}
+                                        />
+                                    </a>
+                                )
+                            }
+                            {/*<a href="">*/}
+                            {/*    <WhatsApp/>*/}
+                            {/*</a>*/}
+                            {/*<a href="">*/}
+                            {/*    <Viber/>*/}
+                            {/*</a>*/}
+                        </div>
+                    </div>
                 </div>
+            </MaxWithLayout>
+
+            <div className="header-line"/>
+
+            <MaxWithLayout>
+
                 <div className="header-bottom">
                     <div className="header-bottom-left">
                         <Link href={'/'} className="header-bottom-left-logo">
                             <Image
-                            src={logo}
+                                alt={'logo'}
+                                title={'Логотик компании'}
+                                src={logo}
                             />
                         </Link>
-                        <Link href={'/complex'} className="header-bottom-left-link">
-                            <SquaresIcon/>
-                            <p>
-                                Торговые комплексы
-                            </p>
-                        </Link>
+                        <div className="header-bottom-left-drop-down">
+                            <CategoryDropDown categories={categories}/>
+                        </div>
                     </div>
 
                     <div className="header-bottom-search">
                         <MainSearch
-                        placeholder={'Найти поставщика'}
+                            placeholder={'Поиск по товару, бренду или артикулу'}
                         />
                     </div>
-                    <div className="header-bottom-nav">
-                        <Link href={''} className="header-bottom-nav-item">
-                            <ProfileIcon/>
-                        </Link>
-                        <Link href={''} className="header-bottom-nav-item">
-                            <FavoriteIcon/>
-                        </Link>
-                        <Link href={''} className="header-bottom-nav-item">
-                            <BucketIcon/>
-                        </Link>
-                    </div>
+                    <Link href={'/bucket'} className="header-bottom-bucket">
+                        <BucketIcon/>
+                        {
+                            products?.length > 0 &&
+                            <div className="header-bottom-bucket-count">
+                                {products?.length}
+                            </div>
+                        }
+                    </Link>
+
                 </div>
             </MaxWithLayout>
+
         </div>
     );
 };

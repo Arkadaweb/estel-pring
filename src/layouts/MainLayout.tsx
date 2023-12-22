@@ -6,8 +6,9 @@ import HeaderMob from "../components/Header/HeaderMob";
 const MainLayout: FC<PropsWithChildren<any>> = ({
                                                     footerMarginTop,
                                                     children,
-                                                    menu
-}) => {
+                                                    categories,
+                                                    contacts,
+                                                }) => {
 
     return (
         <div style={{
@@ -18,12 +19,21 @@ const MainLayout: FC<PropsWithChildren<any>> = ({
             minHeight: '100vh',
             justifyContent: "space-between"
         }}>
-            <Header menu={menu}/>
-            <HeaderMob menu={menu}/>
+            <Header
+                categories={categories}
+                contacts={contacts}
+            />
+            <HeaderMob
+                categories={categories}
+                contacts={contacts}
+            />
             <div style={{flex: 1}}>
                 {children}
             </div>
-            <Footer footerMarginTop={footerMarginTop}/>
+            <Footer
+                footerMarginTop={footerMarginTop}
+                contacts={contacts}
+            />
         </div>
     );
 };

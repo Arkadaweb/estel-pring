@@ -1,32 +1,35 @@
 $orange: #ff6a28;
 $dark-green: #009196;
 $black: #2C2C2C;
-$green: #1CAA83;
 
-$red: rgba(233, 75, 103, 1);
+$violent: rgba(168, 0, 227, 1);
+$green: rgba(16, 199, 0, 1);
 
-$greyWhite: rgba(225, 229, 244, 1);
-$grey: rgba(53, 53, 53, 1);
-$grey8: rgba(53, 53, 53, 0.8);
-$grey6: rgba(53, 53, 53, 0.6);
-$grey5: rgba(53, 53, 53, 0.5);
-$grey4: rgba(53, 53, 53, 0.4);
-$grey2: rgba(53, 53, 53, 0.2);
-$grey1: rgba(53, 53, 53, 0.1);
-$grey05: rgba(53, 53, 53, 0.05);
+$red: rgba(255, 53, 53, 1);
+$red2: rgba(255, 53, 53, 0.2);
 
-$white: #fff;
+$greyWhite: rgba(244, 244, 244, 1);
+$grey: rgba(37, 37, 37, 1);
+$grey8: rgba(37, 37, 37, 0.8);
+$grey5: rgba(37, 37, 37, 0.5);
+$grey2: rgba(37, 37, 37, 0.2);
+$grey15: rgba(37, 37, 37, 0.15);
+
+$white: rgb(255, 255, 255);
 $white8: rgba(255, 255, 255, 0.8);
+$white3: rgba(255, 255, 255, 0.3);
+$white5: rgba(255, 255, 255, 0.5);
+$white2: rgba(255, 255, 255, 0.2);
+$white05: rgba(255, 255, 255, 0.05);
 
-$deepBlue: rgba(71, 93, 197, 1);
-$blue: rgba(75, 103, 233, 1);
-$blue4: rgba(75, 103, 233, 0.4);
-$blue2: rgba(75, 103, 233, 0.2);
-$blue1: rgba(75, 103, 233, 0.1);
-$blue05: rgba(75, 103, 233, 0.05);
+$blue: rgba(2, 21, 87, 1);
+$blueWhite: rgba(53, 134, 255, 1);
+$blueWhite5: rgba(53, 134, 255, 0.5);
+$blueHover: rgba(42, 107, 204, 1);
 
 //fonts
 $fontBase: var(--font-base);
+$fontFire: var(--font-fire);
 
 $size-14: 14px;
 $size-16: 16px;

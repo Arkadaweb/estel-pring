@@ -1,6 +1,6 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
-import PlusIcon from "../../assets/icons/product/PlusIcon";
-import MinusIcon from "../../assets/icons/product/MinusIcon";
+import CounterMinus from "../../assets/icons/counter/CounterMinus";
+import CounterPlus from "../../assets/icons/counter/CounterPlus";
 
 const Counter: FC<PropsWithChildren<any>> = ({
                                                  width = '100%',
@@ -19,7 +19,7 @@ const Counter: FC<PropsWithChildren<any>> = ({
         ) {
             return
         }
-        setCount((prev) => prev + 1)
+        setCount((prev: any) => prev + 1)
     }
 
     const onMinus = () => {
@@ -31,7 +31,7 @@ const Counter: FC<PropsWithChildren<any>> = ({
         ) {
             return
         }
-        setCount((prev) => prev - 1)
+        setCount((prev: any) => prev - 1)
     }
 
     const onChangeCount = (e: any) => {
@@ -52,7 +52,7 @@ const Counter: FC<PropsWithChildren<any>> = ({
                 className="counter-item"
                 onClick={onMinus}
             >
-                <PlusIcon/>
+                <CounterMinus/>
             </div>
             <input
                 style={{
@@ -66,7 +66,7 @@ const Counter: FC<PropsWithChildren<any>> = ({
                 className="counter-item"
                 onClick={onPlus}
             >
-                <MinusIcon/>
+                <CounterPlus/>
             </div>
         </div>
     );

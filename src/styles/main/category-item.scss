@@ -1,0 +1,32 @@
+.category-card {
+    width: 100%;
+
+    cursor: pointer;
+    &-img {
+        height: 413px;
+        width: 100%;
+        position: relative;
+
+        background-color: $greyWhite;
+        border-radius: 20px;
+        border: 1px solid $grey2;
+
+        img{
+            border-radius: 20px;
+            height: 350px;
+            width:  350px;
+        }
+
+        &:hover{
+            border: 2px solid $blueWhite;
+        }
+    }
+
+    &-text {
+        margin-top: 15px;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 27px;
+        color: $grey;
+    }
+}

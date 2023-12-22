@@ -1,5 +1,6 @@
 import React, {FC, PropsWithChildren, useEffect, useRef, useState} from 'react';
-import ArrowToBottom from "../../assets/icons/common/ArrowToBottom";
+import SortIcon from "../../assets/icons/common/SortIcon";
+// import ArrowToBottom from "../../assets/icons/common/ArrowToBottom";
 
 const SortDropDown: FC<PropsWithChildren<any>> = ({
                                                       orderBy,
@@ -7,8 +8,8 @@ const SortDropDown: FC<PropsWithChildren<any>> = ({
                                                       changeSort = (sort: string, type: any) => {},
                                                   }) => {
 
-    // const [activeSort, setActiveSort] = useState<string>(`${orderBy}:${order}`);
-    const [activeSort, setActiveSort] = useState<string>(`price:asc`);
+    const [activeSort, setActiveSort] = useState<string>(`${orderBy}:${order}`);
+    // const [activeSort, setActiveSort] = useState<string>(`price:asc`);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const sortRef = useRef<any>(null);
@@ -22,24 +23,16 @@ const SortDropDown: FC<PropsWithChildren<any>> = ({
             title: 'Цена по убыванию',
             type: 'price:desc'
         },
-        // {
-        //     title: 'По скидкам',
-        //     type: ''
-        // },
         {
             title: 'По популярности',
             type: 'popularity:asc'
-        },
-        {
-            title: 'По новизне',
-            type: 'date:asc'
         },
     ]
 
     const onSetSort = async (item: any) => {
         await setActiveSort(item?.type)
         await setIsOpen(false)
-        // await changeSort('sort', item.type)
+        await changeSort('sort', item.type)
     }
 
     useEffect(() => {
@@ -56,25 +49,21 @@ const SortDropDown: FC<PropsWithChildren<any>> = ({
         };
     }, [isOpen]);
 
-    // useEffect(() => {
-    //     setActiveSort(`${orderBy}:${order}`)
-    // }, [orderBy, order])
+    useEffect(() => {
+        setActiveSort(`${orderBy}:${order}`)
+    }, [orderBy, order])
 
     return (
         <div className="sort" ref={sortRef}>
             <div
                 className="sort-title"
                 onClick={() => setIsOpen(!isOpen)}
-                style={{
-                    border: isOpen ? '1px solid rgba(75, 103, 233, 1)' : "none"
-                }}
             >
+                <SortIcon/>
                 <p>
-                    {sortItems.find((item: any) => item.type === activeSort)?.title}
+                    Сортировка
                 </p>
-                <span className={`${isOpen ? 'rotate-icon' : ''}`}>
-                    <ArrowToBottom/>
-                </span>
+
             </div>
 
             <div className={`sort-popup ${isOpen ? 'sort-popup-open' : ''}`}>
@@ -84,7 +73,7 @@ const SortDropDown: FC<PropsWithChildren<any>> = ({
                             key={item.type}
                             onClick={() => onSetSort(item)}
                             style={{
-                                backgroundColor: item?.type !== activeSort ? 'transparent' : 'rgba(75, 103, 233, 0.1)'
+                                color: item?.type !== activeSort ? 'rgba(37, 37, 37, 1)' : 'rgba(53, 134, 255, 1)'
                             }}
                         >
                             {item?.title}

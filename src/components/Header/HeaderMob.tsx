@@ -1,18 +1,25 @@
 import React, {FC, PropsWithChildren, useEffect, useRef, useState} from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import Link from "next/link";
-import ProfileIcon from "../../assets/icons/header/ProfileIcon";
-import FavoriteIcon from "../../assets/icons/header/FavoriteIcon";
-import BucketIcon from "../../assets/icons/header/BucketIcon";
-import Image from "next/dist/client/legacy/image";
 
-import logo from '../../../public/logo.png'
 import Burger from "../../assets/icons/header/Burger";
-
+import Image from "next/dist/client/legacy/image";
+import logo from '../../../public/logo.png'
+import WhatsApp from "../../assets/icons/header/WhatsApp";
+import Viber from "../../assets/icons/header/Viber";
+import BucketIcon from "../../assets/icons/header/BucketIcon";
+import {useRouter} from "next/router";
+import {useAppSelector} from "../../store/store";
+import {formatPhoneNumber} from "../../help/formatPhoneNumber";
 
 const HeaderMob: FC<PropsWithChildren<any>> = ({
-                                                   menu
+                                                   categories = [],
+                                                   contacts
                                                }) => {
+
+    const router = useRouter();
+
+    const {products} = useAppSelector(state => state.bucket)
 
     const [isOpenNav, setIsOpenNav] = useState<boolean>(false)
 
@@ -21,31 +28,35 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
     const navTop: any = [
         {
             id: 1,
-            path: '',
-            title: 'О компании'
+            path: '/services',
+            title: 'Услуги'
         },
         {
             id: 2,
-            path: '',
-            title: 'Горячая линия'
+            path: '/layout-requirements',
+            title: 'Требования к макетам'
         },
         {
             id: 3,
-            path: '',
-            title: 'Торговые комплексы'
+            path: '/delivery-payment',
+            title: 'Доставка и оплата'
         },
         {
             id: 4,
-            path: '',
-            title: 'Название страницы'
+            path: '/design',
+            title: 'Дизайн'
         },
         {
             id: 5,
-            path: '',
-            title: 'Название страницы'
+            path: '/contact',
+            title: 'Контакты'
         },
     ]
 
+    const onSelectCategory = (url: string) =>{
+        router.push(url)
+        setIsOpenNav(false)
+    }
 
     useEffect(() => {
         const handleClickOutside = (event: any) => {
@@ -112,22 +123,49 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
                         )
                     }
                 </div>
+                <div className="header-mob-side-top-nav-bottom">
+                    {
+                        categories?.map((item: any) =>
+                            <p key={item?.id} onClick={() => onSelectCategory(`/catalog/${item.slug}`)}>
+                                {item?.name}
+                            </p>
+                        )
+                    }
+                </div>
                 <div className="header-mob-side-icons">
-                    <Link href={'/profile'} className="header-mob-side-icons-item-icon">
-                        <ProfileIcon/>
-                    </Link>
-                    <Link href={'/favorite'} className="header-mob-side-icons-item-icon">
-                        <FavoriteIcon/>
-                    </Link>
-                    <Link href={'/bucket'} className="header-mob-side-icons-item-icon">
+                    <Link href={'/bucket'} className="header-mob-side-icons-item-bucket">
                         <BucketIcon/>
+                        {
+                            products?.length > 0 &&
+                            <div className="header-mob-side-icons-item-bucket-count">
+                                {products?.length}
+                            </div>
+                        }
                     </Link>
                 </div>
+                <div className="header-mob-side-icons">
+                    {
+                        contacts?.socials?.map((item: any) =>
+                            <a href={item.link} className="header-mob-side-icons-item-icon">
+                                <Image
+                                    width={25}
+                                    height={25}
+                                    src={item.icon}
+                                />
+                            </a>
+                        )
+                    }
+                    {/*<a href={''} className="header-mob-side-icons-item-icon">*/}
+                    {/*    <WhatsApp/>*/}
+                    {/*</a>*/}
+                    {/*<a href={''} className="header-mob-side-icons-item-icon">*/}
+                    {/*    <Viber/>*/}
+                    {/*</a>*/}
+                </div>
                 <div className="header-mob-side-phone">
-                    <a href="tel:+123456789">
-                        {/*<PhoneIcon/>*/}
-                        +7 000 000 00 00
-                    </a>
+                    {
+                        formatPhoneNumber(contacts?.phone)
+                    }
                 </div>
             </div>
         </div>

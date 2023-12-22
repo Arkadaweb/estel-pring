@@ -2,68 +2,63 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
 
-    height: 33px;
+    width: 53px;
+    height: 53px;
+    border-radius: 50px;
 
-    background-color: $blue1;
-    border-radius: 10px;
-    padding: 0 10px;
+    border: 1px solid $grey2;
 
-    p {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 19px;
-        letter-spacing: 0em;
-        text-align: left;
-        color: $grey;
+    svg {
+        transform: rotate(180deg);
     }
 
+    @media(max-width: 750px){
+        width: 25px !important;
+        height: 25px !important;
+    }
 }
 
 .pagination-to-right {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
 
-    height: 33px;
+    width: 53px;
+    height: 53px;
+    border-radius: 50px;
 
-    background-color: $blue1;
-    border-radius: 10px;
-    padding: 0 10px;
+    border: 1px solid $grey2;
 
-    p {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 19px;
-        letter-spacing: 0em;
-        text-align: left;
-        color: $grey;
+    @media(max-width: 750px){
+        width: 25px !important;
+        height: 25px !important;
     }
 
-    svg {
-        transform: rotate(180deg);
-    }
 }
 
 .ant-pagination-item-active {
-    background-color: $blue !important;
-    border-radius: 10px !important;
+    background-color: $blueWhite !important;
+    border-radius: 50px !important;
 }
 
-@media(max-width: 530px) {
-    .pagination-to-left {
-        p {
-            display: none;
+.ant-pagination{
+    display: flex !important;
+    li{
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 53px !important;
+        height: 53px !important;
+
+        &:hover{
+            border-radius: 50px;
         }
 
-    }
-
-    .pagination-to-right {
-        p {
-            display: none;
+        @media(max-width: 750px){
+            width: 25px !important;
+            height: 25px !important;
+            margin-inline-end: 5px !important;
         }
-
     }
 }

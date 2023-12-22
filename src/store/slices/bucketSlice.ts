@@ -33,10 +33,14 @@ export const bucketSlice = createSlice({
         setPayment: (state: IBucket, action: any) => {
             state.payment = action?.payload
         },
+        setGroup: (state: any, action: any) => {
+            state.products = action?.payload
+        },
     }
 })
 
+
 // actions
-export const {setBucketProducts, setOnClearBucket, setOnClearById, setChangeCount, setPayment} = bucketSlice.actions
+export const {setBucketProducts, setOnClearBucket, setOnClearById, setChangeCount, setPayment, setGroup} = bucketSlice.actions
 
 export default bucketSlice.reducer

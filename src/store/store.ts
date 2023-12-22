@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import filter from './slices/filterSlice';
+import bucket from './slices/bucketSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ const persistConfig = {
 // Use combineReducers from Redux Toolkit to combine slices
 const rootReducer = combineReducers({
 	filter,
+	bucket,
 });
 
 // Wrap your original reducers with persistReducer

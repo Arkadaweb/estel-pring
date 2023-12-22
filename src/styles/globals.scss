@@ -155,12 +155,6 @@ input::placeholder {
     }
 }
 
-
-.ant-select-selector{
-   input{
-       height: 49px !important;
-   }
-}
 #nprogress .bar {
     background: #ff6a28 !important;
     height: 5px !important;
@@ -173,3 +167,24 @@ input::placeholder {
     width: 20px;
     height: 20px;
 }
+
+.main-search{
+    span{
+        border-radius: 50px !important;
+        padding: 0 10px  0 25px;
+    }
+    .ant-input-suffix{
+        cursor: pointer;
+    }
+    height: 100%;
+}
+
+.ant-select-item-option-selected{
+    color: $grey8 !important;
+    font-weight: 400 !important;
+    &:hover{
+        color: $blueWhite !important;
+        font-weight: 400 !important;
+    }
+}
+

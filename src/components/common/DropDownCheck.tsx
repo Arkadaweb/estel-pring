@@ -1,6 +1,5 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
 import {Checkbox} from "antd";
-import ArrowToDown from "../../assets/icons/common/ArrowToDown";
 
 const DropDownCheck: FC<PropsWithChildren<any>> = ({
                                                        item,
@@ -39,7 +38,7 @@ const DropDownCheck: FC<PropsWithChildren<any>> = ({
                     {item?.title}
                 </h3>
                 <div className={`drop-down-check-svg ${isOpen ? 'drop-down-check-svg-rotate' : ''}`}>
-                    <ArrowToDown/>
+                    {/*<ArrowToDown/>*/}
                 </div>
             </div>
 

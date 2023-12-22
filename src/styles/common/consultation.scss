@@ -1,10 +1,10 @@
-.auth{
+.consultation {
     position: fixed;
     height: 100vh;
     width: 100vw;
 
     background-color: rgba(44, 44, 44, 0.7);
-    z-index: 20;
+    z-index: 999;
 
     display: flex;
     justify-content: center;
@@ -12,27 +12,34 @@
 
     opacity: 0;
     visibility: hidden;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+
     transition: all 0.5s;
 
-    &.auth-visible{
+    &.consultation-visible {
         opacity: 1;
         visibility: visible;
-        transition: all 0.5s;
+        transition: visible 0.5s, opacity 0.5s;
     }
 
-    &-wrapper{
+    &-wrapper {
+        box-sizing: border-box;
+        margin: 0 20px;
         width: 100%;
-        max-width: 546px;
-        min-height: 200px;
+        max-width: 660px;
+        min-height: 10px;
 
         padding: 60px;
 
-        background-color: $white;
+        background-color: rgba(2, 21, 87, 1);
         border-radius: 20px;
 
         position: relative;
 
-        &-close{
+
+
+        &-close {
             position: absolute;
             right: 20px;
             top: 20px;
@@ -40,112 +47,134 @@
             cursor: pointer;
         }
 
-        &-title{
+        &-title {
+            font-family: $fontFire;
+            font-size: 45px;
+            font-weight: 400;
+            line-height: 54px;
+            color: $white;
             text-align: center;
-            font-family: $fontCor;
-            font-size: 38px;
-            font-weight: 500;
-            line-height: 46px;
-            letter-spacing: 0em;
+            text-transform: uppercase;
         }
 
-        &-form{
-            margin-top: 30px;
+        &-desc {
+            margin-top: 10px;
+            text-align: center;
 
-            &-remember{
-                margin-top: 20px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            color: $white8;
+        }
+
+        &-form {
+            margin-top: 40px;
+            width: 100% !important;
+
+            input {
+                width: 100% !important;
+                border-bottom: 1px solid $white3 !important;
+                border-radius: 0 !important;
+                padding: 0 0 10px 0 !important;
+
+
+                font-size: 20px !important;
+                font-weight: 300 !important;
+                line-height: 24px !important;
+                color: $white !important;
+
+                &::placeholder {
+                    font-size: 20px !important;
+                    font-weight: 300 !important;
+                    line-height: 24px !important;
+                    color: $white !important;
+                }
+
+                &:hover {
+                    border-bottom: 1px solid $white !important;
+                }
+
+                &:focus {
+                    border-bottom: 1px solid $white !important;
+                }
+
+                &:active {
+                    border-bottom: 1px solid $white !important;
+                }
+            }
+
+            .ant-form-item-has-error {
+                input {
+                    border-bottom: 1px solid $red !important;
+                }
+            }
+
+            .ant-form-item-explain-error{
+
+                display: inline;
+                padding: 10px !important;
+                background-color: $red2 !important;
+                color: $white8 !important;
+                border-radius: 10px !important;
+            }
+            .ant-form-item-control{
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+
+            .ant-form-item{
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+                margin-bottom: 40px !important;
+            }
+
+            &-bottom{
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                gap: 20px;
+                gap: 40px;
 
-                &-remember{
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
+                @media(max-width: 600px){
+                    flex-direction: column;
+                }
 
-                    p{
-                        margin: 0 !important;
-                        font-size: 16px;
-                        font-weight: 300;
-                        line-height: 22px;
-                        letter-spacing: 0em;
-                        text-align: left;
-                        color: $black;
+                &-text{
+                    width: 100%;
+                    max-width: 290px;
+
+                    font-size: 16px;
+                    font-weight: 300;
+                    line-height: 19px;
+                    color: $white5;
+                }
+
+                &-button{
+
+                    width: 70%;
+
+                    @media(max-width: 600px){
+                        width: 100%;
                     }
                 }
-
-                &-forgot{
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 22px;
-                    letter-spacing: 0em;
-                    text-align: left;
-                    color: $orange;
-                    cursor: pointer;
-                }
-            }
-
-            &-button{
-                margin-top: 35px;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            &-help{
-                font-size: 14px;
-                font-weight: 300;
-                line-height: 19px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $black;
-            }
-
-            h4{
-                font-family: $fontCor;
-                font-size: 30px;
-                font-weight: 500;
-                line-height: 36px;
-                letter-spacing: 0em;
-                text-align: center;
-                color: $black;
-            }
-            p{
-                margin-top: 15px;
-                font-size: 18px;
-                font-weight: 300;
-                line-height: 25px;
-                letter-spacing: 0em;
-                text-align: center;
-                color: $black;
-
-            }
-            &-buttons{
-                margin-top: 50px;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
             }
         }
+
     }
 }
 
-.confirm{
+.confirm {
     max-width: 620px;
 }
 
-@media(max-width: 1024px){
 
-}
-
-@media(max-width: 780px){
-    .auth-wrapper-form-buttons{
+@media(max-width: 780px) {
+    .consultation-wrapper-form-buttons {
         display: flex;
         flex-direction: column;
     }
-    .auth-wrapper{
-        padding: 60px 20px;
+    .consultation-wrapper {
+        padding: 40px 20px;
     }
 }
 

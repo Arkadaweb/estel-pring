@@ -1,0 +1,127 @@
+.stand-section {
+    margin-top: 160px;
+    padding: 100px 0;
+
+    width: 100%;
+    min-height: 500px;
+    background-color: $blue;
+
+    border-radius: 40px;
+
+    position: relative;
+
+    &-content {
+        &-title {
+            text-transform: uppercase;
+            font-family: $fontFire;
+            font-size: 45px;
+            font-weight: 400;
+            line-height: 54px;
+            color: $white;
+            width: 50%;
+
+            @media(max-width: 830px) {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        &-line {
+            margin: 50px 0;
+            height: 1px;
+            width: 100%;
+            background-color: $white2;
+        }
+
+        &-img-wrap {
+            width: 100%;
+            height: 100%;
+            max-width: 960px;
+            max-height: 591px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            @media(max-width: 1600px) {
+                max-width: 690px;
+                max-height: 390px;
+            }
+
+            @media(max-width: 1200px) {
+                display: none;
+            }
+
+            &-img {
+                width: 100%;
+                max-width: 960px;
+                height: 100%;
+                max-height: 591px;
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        &-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 40px;
+            z-index: 99;
+
+            @media(max-width: 830px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            &-item {
+                z-index: 99;
+                grid-column: span 1;
+                width: 100%;
+                min-height: 200px;
+                border-radius: 20px;
+                background-color: $white05;
+                padding: 50px;
+
+                &:nth-child(n +3) {
+                    grid-column: span 2;
+                }
+
+                &:nth-child(n + 3) {
+                    width: 49%;
+
+                }
+
+                @media(max-width: 1200px) {
+                    &:nth-child(n +3) {
+                        grid-column: span 1;
+                    }
+
+                    &:nth-child(n + 3) {
+                        width: 100%;
+                    }
+                }
+
+
+                &:hover {
+                    background-color: $blueWhite;
+                    cursor: pointer;
+                }
+
+                h4 {
+                    font-family: $fontFire;
+                    font-size: 35px;
+                    font-weight: 400;
+                    line-height: 42px;
+                    color: $white;
+                }
+
+                p {
+                    margin-top: 30px;
+                    font-size: 20px;
+                    font-weight: 300;
+                    line-height: 24px;
+                    color: $white8;
+                }
+            }
+        }
+    }
+}
+

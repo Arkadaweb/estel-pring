@@ -1,0 +1,93 @@
+.bucket-product-item {
+    width: 100%;
+
+    padding-bottom: 30px;
+    border-bottom: 1px solid $grey15;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    @media(max-width: 1024px) {
+        flex-direction: column;
+    }
+
+    &-img {
+        flex: 1;
+        position: relative;
+        min-width: 187px;
+        width: 187px;
+        height: 187px;
+        overflow: hidden;
+        border: 1px solid $grey2;
+        border-radius: 20px;
+
+        @media(max-width: 1024px) {
+            margin: 0 auto;
+
+        }
+
+        @media(max-width: 1024px) {
+            min-height: 187px;
+        }
+    }
+
+    &-info {
+        flex: 3;
+
+        &-brand {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 17px;
+            color: $grey5;
+        }
+
+        &-title {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            color: $grey;
+        }
+
+        &-size {
+            margin-top: 32px;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 19px;
+            color: $grey;
+        }
+    }
+
+    &-counter {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    &-price {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        color: $grey;
+    }
+
+    &-clear {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            cursor: pointer;
+        }
+    }
+}

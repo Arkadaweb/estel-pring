@@ -1,14 +1,19 @@
-import React, {FC, useState} from 'react';
+import React, {FC, PropsWithChildren, useState} from 'react';
 import Slider from 'react-slick';
 
-import Image from "next/image";
-
 import slideImage from '../../../../public/intro-iamge.png'
-import ArrowToLeft from "../../../assets/icons/lending/ArrowToLeft";
-import ArrowToRight from "../../../assets/icons/lending/ArrowToRight";
 import ButtonCustom from "../../../components/common/ButtonCustom";
+import LongArrowToLeft from "../../../assets/icons/main/LongArrowToLeft";
 
-const IntroSection: FC = () => {
+import testIntroImage from '../../../../public/testIntroImage.png'
+import {useConsultation} from "../../../components/common/ConsultationFormProvider";
+import Image from "next/dist/client/legacy/image";
+
+const IntroSection: FC<PropsWithChildren<any>> = ({
+                              banner
+                          }) => {
+
+    const consultationU = useConsultation()
 
     const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(true);
     const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
@@ -47,30 +52,41 @@ const IntroSection: FC = () => {
     return (
         <div className="intro-section">
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
-                <div className="slide-item">
-                    <Image src={slideImage} alt="Slide 1" style={{width: '100%', height: 620}}/>
-                    <div className="slide-item-inner">
-                        <div className="slide-item-inner-content">
-                            <h2>
-                                Большой выбор профессиональной
-                                косметики для лица и тела
-                            </h2>
-                            <p>
-                                Лучшие бренды профессиональной космецевтики :
-                                IMAGE SKINCARE, SESDERMA, GIGI, HYDROPEPTIDE, OBAGI и многие другие.
-                            </p>
-                            <ButtonCustom
-                                text={'Перейти к брендам'}
+                {
+                    banner?.slides?.map((item: any, index: any) =>
+                        <div className="slide-item">
+                            <Image
+                                layout={'fill'}
+                                src={item?.image}
+                                alt={item?.alt}
+                                title={item?.title}
+                                style={{width: '100%', height: 733}}
                             />
+                            <div className="slide-item-inner">
+                                <div className="slide-item-inner-content">
+                                    {/*<h2>*/}
+                                    {/*    {item?.name}*/}
+                                    {/*    /!*Мобильные стенды <br/>*!/*/}
+                                    {/*    /!*для выставок и презентаций*!/*/}
+                                    {/*</h2>*/}
+                                    <h2 dangerouslySetInnerHTML={{__html: item?.name || ''}}/>
+                                    <p>
+                                        {item?.short}
+                                        {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod*/}
+                                        {/*tempor incididunt ut labore et dolore magna aliqua.*/}
+                                    </p>
+                                    <ButtonCustom
+                                        onPress={() => consultationU(true)}
+                                        padding={'18px 30px'}
+                                        text={'Заказать звонок'}
+                                        borderRadius={50}
+                                        fontWeight={500}
+                                    />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="slide-item">
-                    <Image src={slideImage} alt="Slide 2" style={{width: '100%', height: 620}}/>
-                </div>
-                <div className="slide-item">
-                    <Image src={slideImage} alt="Slide 3" style={{width: '100%', height: 620}}/>
-                </div>
+                    )
+                }
             </Slider>
             <div className="slider-controls">
                 <button
@@ -78,14 +94,14 @@ const IntroSection: FC = () => {
                     onClick={goToPrev}
                     disabled={isPrevButtonDisabled}
                 >
-                    <ArrowToLeft/>
+                    <LongArrowToLeft/>
                 </button>
                 <button
                     className={`slider-control-right ${isNextButtonDisabled ? 'disabled' : ''}`}
                     onClick={goToNext}
                     disabled={isNextButtonDisabled}
                 >
-                    <ArrowToRight/>
+                    <LongArrowToLeft/>
                 </button>
             </div>
         </div>

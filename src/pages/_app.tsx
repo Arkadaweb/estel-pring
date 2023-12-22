@@ -1,6 +1,6 @@
 import '../styles/main.scss'
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AppProps} from "next/app";
 import {NextFonts} from "../components/common/NextFonts";
 import Head from "next/head";
@@ -10,8 +10,15 @@ import {ConfigProvider} from "antd";
 import {PersistGate} from 'redux-persist/integration/react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
+import {ConsultationFormProvider} from "../components/common/ConsultationFormProvider";
+import {ConfirmController} from "../components/common/ConfirmController";
+
+
 
 export default function App({Component, pageProps}: AppProps) {
+
+    console.log('process.env.HOST_SERVER')
+    console.log(process.env.HOST_SERVER)
 
     NProgress.configure({
         minimum: 0.3,
@@ -56,7 +63,11 @@ export default function App({Component, pageProps}: AppProps) {
             <ConfigProvider theme={antdTheme}>
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
-                        <Component {...pageProps} />
+                        <ConsultationFormProvider>
+                            <ConfirmController>
+                                <Component {...pageProps} />
+                            </ConfirmController>
+                        </ConsultationFormProvider>
                     </PersistGate>
                 </Provider>
             </ConfigProvider>

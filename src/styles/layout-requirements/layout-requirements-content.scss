@@ -1,0 +1,36 @@
+.layout-requirements-content{
+    margin-top: 70px;
+
+    h3{
+        margin: 50px 0;
+        font-family: $fontFire;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 48px;
+        color: $grey;
+    }
+
+    p{
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 22px;
+        color: $grey;
+    }
+
+    h5{
+        margin: 40px 0 30px;
+        font-family: $fontFire;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 34px;
+
+        span{
+            font-family: $fontBase;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 22px;
+            color: $grey;
+        }
+    }
+}

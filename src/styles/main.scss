@@ -7,26 +7,45 @@
 
 @import './header/header';
 @import './header/header-mob';
+@import 'header/category-drop-down';
 
 @import 'footer/footer';
 
-@import 'complex/complex';
+@import 'main/intro';
+@import 'main/brands-section';
+@import 'main/category-section';
+@import 'main/category-item';
+@import 'main/stand-section';
+@import 'main/about-section';
+
+@import 'sections/consultation-form';
+@import 'sections/seo';
 
 @import 'search/search';
 
-@import 'product/product';
-@import 'product/choose-color';
-@import 'product/choose-size';
-@import 'product/counter';
+@import 'catalog/catalog-content';
 
-@import "provider/providers";
-@import "provider/provider";
+@import 'product/product-content';
+@import 'product/product-media';
 
-@import 'main/intro-section';
-@import 'main/popular-section';
+@import 'services/services-content';
+
+@import 'layout-requirements/layout-requirements-content';
+
+@import 'delivery-payment/delivery-payment-content';
+
+@import 'design/design-content';
+
+@import 'contact/contact-content';
+
+@import 'policy/policy';
+
+@import 'bucket/bucket-content';
+@import 'bucket/product-item';
+@import 'bucket/order-content';
+@import 'bucket/finish-bucket-content';
 
 @import "common/main-search-input";
-@import "common/complex-item";
 @import "common/bread-crumbs";
 @import "common/second-search-input";
 @import "common/pagination";
@@ -37,3 +56,7 @@
 @import "common/product-item";
 @import "common/button";
 @import "common/slider";
+@import "common/counter";
+@import "common/consultation";
+@import "common/confirm";
+@import "common/not-found";

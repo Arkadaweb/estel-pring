@@ -12,8 +12,19 @@
         color: $grey;
     }
 
-    &-items{
+    &-find{
         margin-top: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-not-found{
+        margin-top: 50px;
+    }
+
+    &-items{
+        margin-top: 50px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;

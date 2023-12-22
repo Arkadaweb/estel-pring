@@ -1,13 +1,31 @@
 .intro-section {
+    margin-top: 30px;
     width: 100%;
-    height: 620px;
+    height: 733px;
     position: relative;
+
+    @media (max-width: 1024px) {
+        margin-top: 0px;
+    }
 }
 
 .slide-item {
     width: 100%;
-    height: 620px;
+    height: 733px;
     position: relative;
+
+    img {
+        border-radius: 40px;
+
+        @media (max-width: 1024px) {
+            border-radius: 0;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        height: 650px;
+    }
+
 
     &-inner {
         position: absolute;
@@ -19,29 +37,35 @@
         margin: 0 auto;
         padding: 0px 20px;
 
+        @media (max-width: 1024px) {
+            top: 45%;
+            transform: translate(-50%, -50%);
+        }
+
         &-content {
-            margin-top: 170px;
-            max-width: 700px;
+            margin-top: 200px;
+            max-width: 750px;
 
             h2 {
-                margin-bottom: 25px;
-                font-family: $fontCor;
-                font-size: 45px;
-                font-weight: 600;
-                line-height: 54px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $black;
+                margin-bottom: 30px;
+                font-family: $fontFire;
+                font-size: 60px;
+                font-weight: 400;
+                line-height: 72px;
+                color: $white;
+
+                @media (max-width: 1024px) {
+                    font-size: 42px;
+                    line-height: 50px;
+                }
             }
 
             p {
-                margin-bottom: 45px;
-                font-size: 20px;
+                margin-bottom: 60px;
+                font-size: 22px;
                 font-weight: 300;
                 line-height: 27px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $black;
+                color: $white;
             }
         }
     }
@@ -54,7 +78,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: $blueWhite5;
 
     margin-left: 20px;
     position: absolute;
@@ -62,9 +86,10 @@
     left: 0;
     transform: translate(0, -50%);
 
-    .disabled {
+    &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        background-color: $white2;
     }
 }
 
@@ -75,7 +100,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: $blueWhite5;
 
     margin-right: 20px;
     position: absolute;
@@ -83,15 +108,28 @@
     right: 0;
     transform: translate(0, -50%);
 
-    .disabled {
+    svg {
+        transform: rotate(180deg);
+    }
+
+    &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        background-color: $white2;
     }
 }
 
 .intro-section .slick-track {
     display: flex;
     gap: 0 !important;
+}
+
+.slider-controls {
+    button {
+        svg {
+            color: $white
+        }
+    }
 }
 
 @media (max-width: 1600px) {
@@ -132,9 +170,9 @@
 }
 
 .slick-dots li.slick-active button:before {
-    color: $orange;
+    color: $blueWhite;
 }
 
 .slick-dots li button:before {
-    color: rgba(255, 106, 40, 0.5);
+    color: $blueWhite;
 }

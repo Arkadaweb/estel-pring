@@ -1,12 +1,13 @@
 import React, {FC, PropsWithChildren, useContext, useEffect, useRef, useState} from 'react';
-import CrossIcon from "../../assets/icons/auth/CrossIcon";
+import CrossIcon from "../../assets/icons/common/CrossIcon";
 import {Checkbox, Form, Input, message} from "antd";
 import ButtonCustom from "./ButtonCustom";
-import Link from "next/link";
+import InputMask from "react-input-mask";
+import {post} from "../../api/request";
 
 const Context = React.createContext<any>(null);
 
-const useAuth = () => {
+const useConsultation = () => {
 
     const {
         setIsVisible
@@ -17,280 +18,127 @@ const useAuth = () => {
     };
 }
 
-const AuthController: FC<PropsWithChildren<any>> = ({children}) => {
+const ConsultationFormProvider: FC<PropsWithChildren<any>> = ({children}) => {
 
     const [isVisible, setIsVisible] = useState<any>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const onClose = () =>{
+    const onClose = () => {
         setIsVisible(false)
-        setState('login')
     }
-
-    //login, singUp, resetPass
-    const [state, setState] = useState('login')
 
     const [form] = Form.useForm();
 
     const onFinish = (values: any) => {
-        form.resetFields()
-        message.success('success')
-    }
+        setIsLoading(true)
 
-    const renderLogin = () => {
-        return (
-            <div className="auth-wrapper">
-                <button
-                    className="auth-wrapper-close"
-                    onClick={onClose}
-                >
-                    <CrossIcon/>
-                </button>
-                <div className="auth-wrapper-title">
-                    Вход
-                </div>
-                <div className="auth-wrapper-form">
-                    <Form
-                        onFinish={onFinish}
-                        layout={"vertical"}
-                        form={form}
-                    >
-                        <Form.Item
-                            name="main"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите почту",
-                                },
-                            ]}
-                        >
-                            <Input
-                                placeholder={'E-mail'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-                        <Form.Item
-                            name="password"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите пароль",
-                                },
-                            ]}
-                        >
-                            <Input.Password
-                                placeholder={'Пароль'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-
-                        <div className="auth-wrapper-form-remember">
-                            <div className="auth-wrapper-form-remember-remember">
-                                <Checkbox
-                                    style={{backgroundColor: '#fff'}}
-                                />
-                                <p>
-                                    Запомнить меня
-                                </p>
-                            </div>
-                            <div
-                                className="auth-wrapper-form-remember-forgot"
-                                onClick={() => setState('resetPass')}
-                            >
-                                Забыли пароль?
-                            </div>
-                        </div>
-
-                        <div className="auth-wrapper-form-button">
-                            <ButtonCustom
-                                width={'100%'}
-                                text={'Войти'}
-                            />
-                            <ButtonCustom
-                                padding={'11px 35px'}
-                                width={'100%'}
-                                text={'Зарегистрироваться'}
-                                backgroundColor={'transparent'}
-                                color={'rgba(44, 44, 44, 1)'}
-                                fontSize={16}
-                                onPress={() => setState('singUp')}
-                            />
-                        </div>
-                    </Form>
-                </div>
-            </div>
-        )
-    }
-
-    const renderSingUp = () => {
-        return (
-            <div className="auth-wrapper">
-                <button
-                    className="auth-wrapper-close"
-                    onClick={onClose}
-                >
-                    <CrossIcon/>
-                </button>
-                <div className="auth-wrapper-title">
-                    Регистрация
-                </div>
-                <div className="auth-wrapper-form">
-                    <Form
-                        onFinish={onFinish}
-                        layout={"vertical"}
-                        form={form}
-                    >
-                        <Form.Item
-                            name="main"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите почту",
-                                },
-                            ]}
-                        >
-                            <Input
-                                placeholder={'Введите e-mail'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-                        <Form.Item
-                            name="password"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите пароль",
-                                },
-                            ]}
-                        >
-                            <Input.Password
-                                placeholder={'Введите пароль'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-                        <Form.Item
-                            name="password-2"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите пароль",
-                                },
-                            ]}
-                        >
-                            <Input.Password
-                                placeholder={'Повторите пароль'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-
-                        <div className="auth-wrapper-form-remember">
-                            <div className="auth-wrapper-form-remember-remember">
-                                <Checkbox
-                                    style={{backgroundColor: '#fff'}}
-                                />
-                                <p>
-                                    Запомнить меня
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="auth-wrapper-form-button">
-                            <ButtonCustom
-                                width={'100%'}
-                                text={'Зарегистрироваться'}
-                            />
-                            <ButtonCustom
-                                padding={'11px 35px'}
-                                width={'100%'}
-                                text={'Войти'}
-                                backgroundColor={'transparent'}
-                                color={'rgba(44, 44, 44, 1)'}
-                                fontSize={16}
-                                onPress={() => setState('login')}
-                            />
-                        </div>
-                    </Form>
-                </div>
-            </div>
-        )
-    }
-
-    const renderResetPass = () => {
-        return (
-            <div className="auth-wrapper">
-                <button
-                    className="auth-wrapper-close"
-                    onClick={onClose}
-                >
-                    <CrossIcon/>
-                </button>
-                <div className="auth-wrapper-title">
-                    Восстановление пароля
-                </div>
-                <div className="auth-wrapper-form">
-                    <Form
-                        onFinish={onFinish}
-                        layout={"vertical"}
-                        form={form}
-                    >
-                        <Form.Item
-                            name="main"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Пожалуйста, введите почту",
-                                },
-                            ]}
-                        >
-                            <Input
-                                placeholder={'Введите e-mail'}
-                                style={{
-                                    height: 47
-                                }}
-                            />
-                        </Form.Item>
-
-                        <div className="auth-wrapper-form-help">
-                            Введите свой e-mail, мы отправим на него ссылку для восстановления пароля
-                        </div>
-
-                        <div className="auth-wrapper-form-button">
-                            <ButtonCustom
-                                width={'100%'}
-                                text={'Восстановить пароль'}
-                            />
-                        </div>
-                    </Form>
-                </div>
-            </div>
-        )
+        post('wp-json/wp/v3/mail', {
+            name: values?.name,
+            phone: values?.phone
+        })
+            .then((response: any) => {
+                message.success('Форма успешно отправлена')
+                form.resetFields()
+            })
+            .catch((e: any) => {
+                message.error("Произошла ошибка при отправке формы")
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
     }
 
     return (
         <Context.Provider value={{setIsVisible}}>
-            <div className={`auth ${isVisible ? 'auth-visible' : ''}`}>
-                {
-                    state === 'login' && renderLogin()
-                }
-                {
-                    state === 'singUp' && renderSingUp()
-                }
-                {
-                    state === 'resetPass' && renderResetPass()
-                }
+            <div className={`consultation ${isVisible ? 'consultation-visible' : ''}`}>
+                <div className="consultation-wrapper">
+                    <button
+                        className="consultation-wrapper-close"
+                        onClick={onClose}
+                    >
+                        <CrossIcon/>
+                    </button>
+                    <div className="consultation-wrapper-title">
+                        бесплатная консультация
+                    </div>
+                    <div className="consultation-wrapper-desc">
+                        Оставьте заявку, и мы перезвоним вам!
+                    </div>
+                    <div className="consultation-wrapper-form">
+                        <Form
+                            form={form}
+                            layout={"vertical"}
+                            onFinish={onFinish}
+                        >
+                            <Form.Item
+                                name="name"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Данные введены неверно",
+                                    },
+                                ]}
+                            >
+                                <Input
+                                    bordered={false}
+                                    placeholder={'Ваше имя'}
+                                    style={{
+                                        height: 47
+                                    }}
+                                />
+                            </Form.Item>
+                            <Form.Item
+                                name="phone"
+                                rules={[
+                                    {
+                                        validator: (_, value) => {
+                                            return value.length === 18 ? Promise.resolve() : Promise.reject('Данные введены неверно ');
+                                        },
+                                    },
+                                ]}
+                            >
+                                <InputMask
+                                    mask="+7 (999) 999-99-99"
+                                    maskChar=""
+                                    placeholder='Ваш телефон'
+                                    style={{
+                                        backgroundColor: 'transparent',
+                                        border: 'none',
+                                    }}
+                                >
+
+                                    {((inputProps: any) => {
+                                        return <Input
+                                            {...inputProps}
+                                            type="tel"
+                                            disableUnderline
+                                        />
+                                    }) as any}
+                                </InputMask>
+                            </Form.Item>
+                            <div className="consultation-form-form-bottom">
+                                <div className="consultation-form-form-bottom-text">
+                                    Отправляя форму, вы соглашаетесь
+                                    с политикой конфиденциальности.
+                                </div>
+                                <div className="consultation-form-form-bottom-button">
+                                    <ButtonCustom
+                                        isLoading={isLoading}
+                                        width={'100%'}
+                                        text={'Отправить'}
+                                        padding={"18px 0"}
+                                        borderRadius={'50px'}
+                                    />
+                                </div>
+                            </div>
+
+                        </Form>
+                    </div>
+                </div>
             </div>
             {children}
         </Context.Provider>
     );
 };
 
-export {AuthController, useAuth};
+export {ConsultationFormProvider, useConsultation};

@@ -1,8 +1,5 @@
 import React, {FC, PropsWithChildren, useRef, useState} from 'react';
-import Image from "next/dist/client/legacy/image";
-import slideImage from "../../../public/testSlideImage.png";
 import Slider from "react-slick";
-import ArrowToRight from "../../assets/icons/main/ArrowToRight";
 import ArrowToBottom from "../../assets/icons/common/ArrowToBottom";
 
 const Categories: FC<PropsWithChildren<any>> = ({}) => {

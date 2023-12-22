@@ -4,14 +4,15 @@ import {Button} from "antd";
 const ButtonCustom = ({
                           fontSize = 18,
                           padding = '10px 35px',
-                          backgroundColor = 'rgba(75, 103, 233, 1)',
+                          backgroundColor = 'rgba(53, 134, 255, 1)',
                           color = '#fff',
                           text = '',
-                          fontWeight = 600,
-                          borderRadius = 10,
-                          isLoading,
+                          fontWeight = 500,
+                          borderRadius = 50,
+                          isLoading = false,
                           width = 'auto',
-                          onPress = () => {},
+                          onPress = () => {
+                          },
                           height = '100%',
                           border,
                       }: any) => {

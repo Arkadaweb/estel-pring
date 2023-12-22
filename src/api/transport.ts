@@ -8,12 +8,12 @@ export const configureTransport = (token = null) => {
 
     const options: any =  token  ?
         {
-            baseURL: apiUrl,
+            baseURL: process.env.HOST_SERVER,
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         }
-        : { baseURL: apiUrl };
+        : { baseURL: process.env.HOST_SERVER };
     transport = axios.create(options);
 
     return transport;

@@ -1,0 +1,254 @@
+.product-content{
+    margin-top: 70px;
+
+    &-main {
+        margin-top: 50px;
+
+        width: 100%;
+        display: grid;
+        grid-template-columns: 7% 35% auto;
+        gap: 30px;
+
+        @media(max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-slider {
+            position: relative;
+
+            .slick-list{
+                height: 456px !important;
+            }
+
+            &-img {
+                position: relative;
+                width: 106px;
+                height: 106px;
+
+                border-radius: 15px;
+                overflow: hidden;
+                border: 1px solid $grey2;
+
+                &:hover{
+                    border: 1px solid $blueWhite;
+                    cursor: pointer;
+                }
+            }
+
+            button {
+                width: 100%;
+                &.disabled {
+                    color: $grey5 !important;
+                }
+            }
+
+            &-top {
+                position: absolute;
+                top: -10px;
+                z-index: 11;
+            }
+
+            &-bottom {
+                position: absolute;
+                bottom: -10px;
+                z-index: 11;
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            @media(max-width: 1025px) {
+                order: 2;
+                button{
+                    display: none;
+                }
+                &-img {
+                    position: relative;
+                    width: 106px;
+                    height: 106px;
+                }
+                .slick-track{
+                    display: flex;
+                    gap: 20px;
+                }
+            }
+        }
+
+        &-photo {
+            position: relative;
+            width: 100%;
+            height: 458px;
+            border: 1px solid $grey2;
+            border-radius: 20px;
+            overflow: hidden;
+
+            @media(max-width: 1024px) {
+                display: flex;
+                justify-content: center;
+                order: 1;
+                width: 100%;
+                max-width: 100%;
+                height: 640px;
+            }
+        }
+
+        &-info {
+
+            @media(max-width: 1024px) {
+                order: 3;
+            }
+
+            &-top{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                h4{
+                    font-size: 16px;
+                    font-weight: 300;
+                    line-height: 19px;
+                    color: $grey5;
+                }
+                h5{
+                    font-size: 14px;
+                    font-weight: 300;
+                    line-height: 19px;
+                    color: $grey5;
+                }
+            }
+
+            &-title {
+                margin-top: 15px;
+                font-family: $fontFire;
+                font-size: 40px;
+                font-weight: 400;
+                line-height: 48px;
+
+                color: $grey;
+            }
+
+            &-selector{
+                margin-top: 30px;
+
+                h6{
+                    margin-bottom: 13px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 17px;
+                    color: $grey;
+                }
+
+                .ant-select-selector{
+                    border-radius: 10px !important;
+                }
+                .ant-select-item-option-content{
+                    font-size: 16px !important;
+                    font-weight: 300 !important;
+                    line-height: 19px !important;
+                    color: $grey8 !important;
+                }
+                .ant-select-item-option-active{
+                    color: $grey8 !important;
+                    font-weight: 300 !important;
+                    &:hover{
+                        color: $grey8 !important;
+                        font-weight: 300 !important;
+                    }
+                }
+
+            }
+
+            &-type {
+                margin-top: 30px;
+            }
+
+            &-size {
+                margin-top: 50px;
+            }
+
+            &-price {
+                margin-top: 50px;
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 27px;
+                color: $grey;
+            }
+
+            &-count {
+                margin-top: 20px;
+
+                display: flex;
+                gap: 20px;
+
+                @media(max-width: 1025px) {
+
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+
+                }
+            }
+
+            &-have {
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 19px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $grey;
+            }
+        }
+    }
+
+    &-media{
+        margin-top: 100px;
+
+
+        &-title{
+            font-family: $fontFire;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 46px;
+            color: $grey;
+        }
+        &-items{
+            margin-top: 40px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+
+            @media(max-width: 1023px){
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media(max-width: 640px){
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+
+    &-desc{
+        margin-top: 100px;
+
+        h4{
+            font-family: $fontFire;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 46px;
+            color: $grey;
+        }
+        p{
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 22px;
+            color: $grey8;
+        }
+    }
+
+    &-common{
+        margin-top: 100px;
+    }
+}

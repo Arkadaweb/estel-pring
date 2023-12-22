@@ -1,12 +1,16 @@
-import React, {FC, useState} from 'react';
+import React, {FC, PropsWithChildren, useState} from 'react';
 import MaxWithLayout from "../../../layouts/MaxWithLayout";
 import Slider from "react-slick";
-import slideImage from "../../../../public/intro-iamge.png";
-import ArrowToLeft from "../../../assets/icons/lending/ArrowToLeft";
-import ArrowToRight from "../../../assets/icons/lending/ArrowToRight";
-import ProductItem from "../../../components/common/ProductItem";
+import LongArrowToLeft from "../../../assets/icons/main/LongArrowToLeft";
+import Image from "next/dist/client/legacy/image";
 
-const PopularSection: FC = () => {
+import testSlideImage from '../../../../public/testSlideImage.png'
+import Link from "next/link";
+
+const Brands: FC<PropsWithChildren<any>> = ({
+                                                brands
+                                            }) => {
+
 
     const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(true);
     const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
@@ -15,31 +19,37 @@ const PopularSection: FC = () => {
 
     const settings = {
         infinite: false,
-        slidesToShow: 5,
+        slidesToShow: 6,
         slidesToScroll: 1,
         arrows: false,
-        dots: false,
+        dots: true,
         responsive: [
             {
                 breakpoint: 1350,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 5,
                 }
             },
             {
                 breakpoint: 1050,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 4,
                 }
             },
             {
                 breakpoint: 900,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                 }
             },
             {
                 breakpoint: 650,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 450,
                 settings: {
                     slidesToShow: 1,
                 }
@@ -57,98 +67,52 @@ const PopularSection: FC = () => {
 
     const handleBeforeChange = (oldIndex: any, newIndex: any) => {
         setIsPrevButtonDisabled(newIndex === 0);
-        setIsNextButtonDisabled(newIndex === slider.props.children.length - 5);
+        setIsNextButtonDisabled(newIndex === slider.props.children.length - 6);
     };
 
-    const sliderItems = [
-        {
-            id: 1,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: true,
-            type: 'new',
-            oldPrice: ''
-        },
-        {
-            id: 2,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: false,
-            type: 'sale',
-            oldPrice: ''
-        },
-        {
-            id: 3,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: false,
-            type: '',
-            oldPrice: '20 000'
-        },
-        {
-            id: 4,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: false,
-            type: '',
-            oldPrice: '20 000'
-        },
-        {
-            id: 5,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: false,
-            type: '',
-            oldPrice: '20 000'
-        },
-        {
-            id: 6,
-            img: slideImage,
-            desc: 'Skin Deva 100% Pure Hyaluronic Acid Сыворотка...',
-            price: '20 000',
-            isFavorite: false,
-            type: '',
-            oldPrice: '20 000'
-        },
-    ]
+    const sliderItems = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     return (
-        <div className="popular">
+        <div className="brand-section">
             <MaxWithLayout>
-                <div className="popular-content">
-                    <div className="popular-content-top">
+                <div className="brand-section-content">
+                    <div className="brand-section-content-top">
                         <h3>
-                            Популярные товары
+                            Бренды, с которыми работаем
                         </h3>
-                        <div className="popular-content-top-buttons">
+                        <div className="brand-section-content-top-buttons">
                             <button
-                                className={`slider-popular ${isPrevButtonDisabled ? 'disabled-slicer-popular' : ''}`}
+                                className={`brand-section-left ${isPrevButtonDisabled ? 'disabled-slicer-popular' : ''}`}
                                 onClick={goToPrev}
                                 disabled={isPrevButtonDisabled}
                             >
-                                <ArrowToLeft/>
+                                <LongArrowToLeft/>
                             </button>
                             <button
-                                className={`slider-popular ${isNextButtonDisabled ? 'disabled-slicer-popular' : ''}`}
+                                className={`brand-section-right ${isNextButtonDisabled ? 'disabled-slicer-popular' : ''}`}
                                 onClick={goToNext}
                                 disabled={isNextButtonDisabled}
                             >
-                                <ArrowToRight/>
+                                <LongArrowToLeft/>
                             </button>
                         </div>
                     </div>
 
-                    <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
+                    <Slider
+                        className="brand-slider"
+                        ref={(c) => (slider = c)}
+                        {...settings}
+                        beforeChange={handleBeforeChange}
+                    >
                         {
-                            sliderItems.map((item: any) =>
-                                <div key={item.id}>
-                                    <ProductItem item={item}/>
-                                </div>
+                            brands?.map((item: any) =>
+                                <Link href={`/catalog?attribute=pa_brand&attribute_term=${item?.id}`}  key={item.id} className="brand-section-img">
+                                    <Image
+                                        layout={'fill'}
+                                        objectFit={'cover'}
+                                        src={item?.src?.image}
+                                    />
+                                </Link>
                             )
                         }
                     </Slider>
@@ -158,4 +122,4 @@ const PopularSection: FC = () => {
     );
 };
 
-export default PopularSection;
+export default Brands;
