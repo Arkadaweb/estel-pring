@@ -80,7 +80,7 @@ const Brands: FC<PropsWithChildren<any>> = ({
                         <h3>
                             Бренды, с которыми работаем
                         </h3>
-                        <div className="brand-section-content-top-buttons">
+                        <div className="brand-section-content-top-buttons hide-buttons">
                             <button
                                 className={`brand-section-left ${isPrevButtonDisabled ? 'disabled-slicer-popular' : ''}`}
                                 onClick={goToPrev}

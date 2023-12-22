@@ -5,18 +5,16 @@ import Image from "next/dist/client/legacy/image";
 import bcg from '../../../../public/main-page-stand-bcg.png'
 
 const StandSection: FC<PropsWithChildren<any>> = ({
-                          about
-                      }) => {
+                                                      about
+                                                  }) => {
 
     return (
         <div className="stand-section">
             <MaxWithLayout>
                 <div className="stand-section-content">
-                    <div className="stand-section-content-title">
-                        {
-                            about?.title
-                        }
-                    </div>
+                    <p className="stand-section-content-title"
+                       dangerouslySetInnerHTML={{__html: about?.title || ''}}/>
+
                     <div className="stand-section-content-line"/>
                     <div className="stand-section-content-items">
                         {

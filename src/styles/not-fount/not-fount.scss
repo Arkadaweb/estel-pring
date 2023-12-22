@@ -1,0 +1,42 @@
+.not-fount {
+
+    &-content {
+        margin-top: 50px;
+
+        h1 {
+            margin: 50px 0;
+            font-family: $fontFire;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 48px;
+            color: $grey;
+        }
+
+        &-block {
+
+            padding: 30px;
+            border-radius: 20px;
+            background-color: $greyWhite;
+
+            h3 {
+                font-size: 22px;
+                font-weight: 400;
+                line-height: 27px;
+                color: $grey;
+            }
+
+            p {
+                margin-top: 20px;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 19px;
+                color: $grey;
+
+            }
+
+            &-button {
+                margin-top: 40px;
+            }
+        }
+    }
+}

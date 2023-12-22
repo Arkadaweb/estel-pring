@@ -59,6 +59,10 @@
                 align-items: center;
                 gap: 20px;
 
+                &.hide-buttons{
+                    display: none;
+                }
+
                 @media(max-width: 1024px) {
                     z-index: 99;
                     position: absolute;
