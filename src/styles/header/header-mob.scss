@@ -33,6 +33,24 @@
                 cursor: pointer;
             }
 
+            &-right{
+                cursor: pointer;
+
+                &-icon{
+                    cursor: pointer;
+                }
+
+                &-search{
+                    height: 70px;
+                    padding: 10px;
+                    background-color: $white;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                }
+            }
+
             &-center{
                 a{
                     margin-bottom: 5px;

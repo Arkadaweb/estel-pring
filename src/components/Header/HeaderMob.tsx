@@ -12,6 +12,8 @@ import {useRouter} from "next/router";
 import {useAppSelector} from "../../store/store";
 import {formatPhoneNumber} from "../../help/formatPhoneNumber";
 import ArrowToBottom from "../../assets/icons/common/ArrowToBottom";
+import MainSearch from "../common/MainSearch";
+import SearchIcon from "../../assets/icons/header/SearchIcon";
 
 const HeaderMob: FC<PropsWithChildren<any>> = ({
                                                    categories = [],
@@ -24,8 +26,10 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
 
     const [isOpenNav, setIsOpenNav] = useState<boolean>(false)
     const [isOpenCatalog, setIsOpenCatalog] = useState<boolean>(false)
+    const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false)
 
     const headerMobRef = useRef<any>(null);
+    const headerSearchRef = useRef<any>(null);
 
     const navTop: any = [
         {
@@ -55,7 +59,7 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
         },
     ]
 
-    const onSelectCategory = (url: string) =>{
+    const onSelectCategory = (url: string) => {
         router.push(url)
         setIsOpenNav(false)
     }
@@ -73,6 +77,20 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [headerMobRef]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (headerSearchRef.current && !headerSearchRef?.current?.contains(event.target)) {
+                setIsOpenSearch(false)
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [headerSearchRef]);
 
     useEffect(() => {
         if (isOpenNav) {
@@ -101,8 +119,21 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
                                 />
                             </Link>
                         </div>
-                        <div className="header-main-main-mob-content-right">
-
+                        <div className="header-mob-main-content-right">
+                            <div
+                                className="header-mob-main-content-right-icon"
+                                onClick={() => setIsOpenSearch(true)}
+                            >
+                                <SearchIcon/>
+                            </div>
+                            {
+                                isOpenSearch &&
+                                <div className="header-mob-main-content-right-search" ref={headerSearchRef}>
+                                    <MainSearch
+                                        placeholder={'Поиск по товару, бренду или артикулу'}
+                                    />
+                                </div>
+                            }
                         </div>
                     </div>
                 </MaxWithLayout>
@@ -117,7 +148,7 @@ const HeaderMob: FC<PropsWithChildren<any>> = ({
                     </Link>
                 </div>
                 <div className="header-mob-side-top-nav-bottom">
-                    <h4 onClick={() =>setIsOpenCatalog(!isOpenCatalog)}>
+                    <h4 onClick={() => setIsOpenCatalog(!isOpenCatalog)}>
                         Каталог
                         <ArrowToBottom color={'#000'}/>
                     </h4>

@@ -5,6 +5,7 @@ import SearchIcon from "../../assets/icons/header/SearchIcon";
 import type {SelectProps} from 'antd/es/select';
 import {useDebounce} from "use-debounce";
 import {api} from "../../api/request";
+import CrossIcon from "../../assets/icons/common/CrossIcon";
 
 
 const MainSearch = ({...props}) => {
