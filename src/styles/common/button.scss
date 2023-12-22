@@ -1,0 +1,40 @@
+.custom-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-button::before,
+.custom-button::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+
+.custom-button::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+}
+
+.custom-button::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s;
+}
+
+.custom-button:hover::before {
+    transform: scaleX(1);
+}
+
+.custom-button:hover::after {
+    transform: scaleY(1);
+}

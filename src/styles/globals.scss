@@ -1,0 +1,175 @@
+@use './_variable.scss' as *;
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+html,
+body {
+    height: 100%;
+    line-height: 1.5;
+    font-family: var(--font-base);
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*,
+:before,
+:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-locale: auto;
+    font-family: var(--font-base);
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 0;
+}
+
+button {
+    border: none; /* Remove button border */
+    background: none; /* Remove button background */
+    padding: 0; /* Remove button padding */
+    margin: 0; /* Remove button margin */
+    outline: none; /* Remove button outline (focus) */
+    cursor: pointer; /* Show pointer cursor on hover (optional) */
+}
+
+input[type='text'],
+input[type='password'],
+input[type='tel'],
+input[type='email'],
+input[type='number'],
+textarea,
+button {
+    -webkit-appearance: none;
+}
+
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    width: 0;
+    height: 0;
+}
+
+fieldset {
+    border: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-base);
+    font-weight: 400;
+    color: inherit;
+    margin: 0;
+}
+
+h5,
+h6 {
+    font-family: var(--font-base);
+    font-weight: 600;
+    color: inherit;
+    margin: 0;
+    font-size: $size-14;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+
+}
+
+input::placeholder {
+    color: #2C2C2C !important;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: $fontBase,
+}
+
+.ant-pagination-item-active {
+    background-color: $orange !important;
+    border-radius: 20px !important;
+
+    a {
+        color: #ffffff !important;
+    }
+}
+
+.ant-input-group-addon{
+    button{
+        span{
+            height: 100%;
+        }
+        margin: 0 !important;
+        padding: 0  !important;
+        width: 49px;
+        height: 49px !important;
+        border-radius: 13px !important;
+        transform: translateX(-10px);
+        z-index: 999;
+    }
+}
+
+
+.ant-select-selector{
+   input{
+       height: 49px !important;
+   }
+}
+#nprogress .bar {
+    background: #ff6a28 !important;
+    height: 5px !important;
+}
+
+
+#nprogress .spinner-icon {
+    border-top-color: #ff6a28;
+    border-left-color: #ff6a28;
+    width: 20px;
+    height: 20px;
+}

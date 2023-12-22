@@ -1,0 +1,37 @@
+.search-content{
+    margin-top: 30px;
+
+    &-title{
+        margin-top: 40px;
+
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 44px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $grey;
+    }
+
+    &-items{
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+}
+
+@media(max-width: 1024px){
+    .search-content{
+        &-items{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media(max-width: 720px){
+    .search-content{
+        &-items{
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

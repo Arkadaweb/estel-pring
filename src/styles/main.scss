@@ -1,0 +1,39 @@
+@import "nprogress/nprogress.css";
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+@import 'globals';
+@import 'variable';
+
+@import './header/header';
+@import './header/header-mob';
+
+@import 'footer/footer';
+
+@import 'complex/complex';
+
+@import 'search/search';
+
+@import 'product/product';
+@import 'product/choose-color';
+@import 'product/choose-size';
+@import 'product/counter';
+
+@import "provider/providers";
+@import "provider/provider";
+
+@import 'main/intro-section';
+@import 'main/popular-section';
+
+@import "common/main-search-input";
+@import "common/complex-item";
+@import "common/bread-crumbs";
+@import "common/second-search-input";
+@import "common/pagination";
+@import "common/sort";
+@import "common/categories";
+@import "common/drop-down";
+@import "common/filter";
+@import "common/product-item";
+@import "common/button";
+@import "common/slider";

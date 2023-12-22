@@ -1,0 +1,48 @@
+.bread-crumbs {
+    display: flex;
+    gap: 5px;
+
+    li {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+        text-align: left;
+        color: $grey5;
+
+        &:last-child{
+            color: $grey8;
+        }
+
+        @media(max-width: 1014px){
+            display: none;
+        }
+    }
+
+    &-back{
+        display: none;
+
+        @media(max-width: 1014px){
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 19px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: $grey8;
+            padding: 5px 15px;
+            border-radius: 50px;
+            background-color: $grey05;
+            cursor: pointer;
+
+            svg{
+                transform: rotate(180deg);
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

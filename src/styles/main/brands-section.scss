@@ -1,0 +1,74 @@
+.popular {
+    margin-top: 160px;
+
+    &-content {
+
+        &-top {
+            padding: 0 20px;
+
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            h3 {
+                font-family: $fontCor;
+                font-size: 40px;
+                font-weight: 500;
+                line-height: 48px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $black;
+            }
+
+            &-buttons {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    width: 46px;
+                    height: 46px;
+                    border-radius: 50%;
+                    color: $white;
+                    background-color: $orange;
+
+                    &:disabled,
+                    &[disabled] {
+                        background-color: #FF6A2833;
+                        color: #2C2C2C4D;
+                    }
+
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .popular {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 650px) {
+    .popular-content-top-buttons{
+        display: none;
+    }
+    .popular-content-top {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+}
