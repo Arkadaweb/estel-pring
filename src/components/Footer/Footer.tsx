@@ -17,27 +17,27 @@ const Footer: FC<PropsWithChildren<any>> = ({
     const navTop: any = [
         {
             id: 1,
-            path: '',
+            path: '/services',
             title: 'Услуги'
         },
         {
             id: 2,
-            path: '',
+            path: '/layout-requirements',
             title: 'Требования к макетам'
         },
         {
             id: 3,
-            path: '',
+            path: '/delivery-payment',
             title: 'Доставка и оплата'
         },
         {
             id: 4,
-            path: '',
+            path: '/design',
             title: 'Дизайн'
         },
         {
             id: 5,
-            path: '',
+            path: '/contact',
             title: 'Контакты'
         },
     ]
