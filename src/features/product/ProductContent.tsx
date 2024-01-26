@@ -19,6 +19,10 @@ import {useRouter} from "next/router";
 
 const {Option} = Select;
 
+
+const compareAttributes = (arr1, arr2) =>
+    arr1.every(attr => arr2.some(attr2 => attr.id === attr2.id && attr.option === attr2.option));
+
 const ProductContent: FC<PropsWithChildren<any>> = ({
                                                         product,
                                                         variations,
@@ -28,10 +32,20 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
 
     const router = useRouter()
 
-    const [mainImage, setMainImage] = useState(product?.images?.[0]?.src || null)
-    const [selectedType, setSelectedType] = useState(product?.attributes?.find((item: any) => item?.id === 4)?.options?.[0])
 
-    const selectedProduct = variations.find((item: any) => item?.name === selectedType) || product
+    const initVariantOptions = product.attributes?.map((item: any) => ({
+        id: item?.id,
+        name: item?.name,
+        option: item?.options?.[0]
+    }))
+
+    const mainVariant = variations.find(item => compareAttributes(item.attributes, initVariantOptions));
+
+
+    const [mainImage, setMainImage] = useState(mainVariant?.image?.src || product?.images?.[0]?.src || null)
+    const [selectedType, setSelectedType] = useState(initVariantOptions || [])
+
+    const selectedProduct = variations.find(item => compareAttributes(item.attributes, selectedType)) || product
 
     const {products} = useAppSelector((state: any) => state.bucket)
     const dispatch = useAppDispatch()
@@ -48,7 +62,7 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
             dispatch(setChangeCount({
                 id: selectedProduct?.id || product?.id,
                 count
-            }  as any ))
+            } as any))
         }
     }, [count])
 
@@ -123,8 +137,24 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
         setIsNextButtonDisabled(newIndex === slider?.props?.children?.length - 4);
     };
 
+    const onChangeSelectType = (option: any, name: any) =>{
+
+        const updatedTypes = selectedType.map((type: any) => {
+            if (type.name === name) {
+                return {
+                    ...type,
+                    option: option
+                };
+            } else {
+                return type;
+            }
+        });
+
+        setSelectedType(updatedTypes);
+    }
+
     useEffect(() => {
-        const currentVariant = variations.find((item: any) => item?.name === selectedType)
+        const currentVariant = variations.find(item => compareAttributes(item.attributes, selectedType));
         setMainImage(currentVariant?.image?.src || product?.images?.[0]?.src)
     }, [selectedType, product])
 
@@ -193,31 +223,59 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
                                 {product?.name || '---'}
                             </div>
 
-                            {product?.attributes?.find((item: any) => item?.id === 4) &&
-                            <div className="product-content-main-info-selector">
-                                <h6>
-                                    Размер (Ш*Д*В) мм
-                                </h6>
-                                <Select
-                                    value={selectedType}
-                                    onChange={(e) => setSelectedType(e)}
-                                    suffixIcon={<SelectorArrow/>}
-                                    defaultValue={product?.attributes?.find((item: any) => item?.id === 4)?.options?.[0]}
-                                    style={{
-                                        width: 200
-                                    }}
-                                >
-                                    {product?.attributes?.find((item: any) => item?.id === 4)?.options?.map((option: any) => {
-                                        return (
-                                            <Option key={option} value={option}>
-                                                {option}
-                                            </Option>
-                                        );
-                                    })}
-                                </Select>
+                            {/*{product?.attributes?.find((item: any) => item?.id === 4) &&*/}
+                            {/*<div className="product-content-main-info-selector">*/}
+                            {/*    <h6>*/}
+                            {/*        Размер (Ш*Д*В) мм*/}
+                            {/*    </h6>*/}
+                            {/*    <Select*/}
+                            {/*        value={selectedType}*/}
+                            {/*        onChange={(e) => setSelectedType(e)}*/}
+                            {/*        suffixIcon={<SelectorArrow/>}*/}
+                            {/*        defaultValue={product?.attributes?.find((item: any) => item?.id === 4)?.options?.[0]}*/}
+                            {/*        style={{*/}
+                            {/*            width: 200*/}
+                            {/*        }}*/}
+                            {/*    >*/}
+                            {/*        {product?.attributes?.find((item: any) => item?.id === 4)?.options?.map((option: any) => {*/}
+                            {/*            return (*/}
+                            {/*                <Option key={option} value={option}>*/}
+                            {/*                    {option}*/}
+                            {/*                </Option>*/}
+                            {/*            );*/}
+                            {/*        })}*/}
+                            {/*    </Select>*/}
 
-                            </div>
-                            }
+                            {/*</div>*/}
+                            {/*}*/}
+
+                            {product?.attributes?.lenght !== 0 &&
+                            product?.attributes?.map((item: any) =>
+                                <div className="product-content-main-info-selector">
+                                    <h6>
+                                        {item?.name}
+                                    </h6>
+                                    <Select
+                                        value={item.option}
+                                        onChange={(e) => onChangeSelectType(e, item?.name)}
+                                        suffixIcon={<SelectorArrow/>}
+                                        defaultValue={item?.options[0]}
+                                        style={{
+                                            width: 200
+                                        }}
+                                    >
+                                        {
+                                            item?.options?.map((itemOpt: any) =>
+                                                <Option key={itemOpt} value={itemOpt}>
+                                                    {itemOpt}
+                                                </Option>
+                                            )
+                                        }
+                                    </Select>
+
+                                </div>
+                            )}
+
                             <div
                                 className="product-content-main-info-price"
                             >

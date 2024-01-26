@@ -52,7 +52,7 @@ const Footer: FC<PropsWithChildren<any>> = ({
                             <Image
                                 alt={'logo'}
                                 title={'Логотик компании'}
-                                src={whiteLogo}
+                                src={whiteLogo} 
                             />
                         </h3>
                         <p>

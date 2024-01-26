@@ -42,8 +42,7 @@ const BucketProductItem: FC<PropsWithChildren<any>> = ({
                     {item?.name}
                 </div>
                 <div className="bucket-product-item-info-size">
-                    2500*400*2300
-                    {/*{item?.attributes?.find((item: any) => item?.name === 'Размер (Ш*Д*В) мм')?.options}*/}
+                    {item?.attributes?.map((item: any) => item?.option)?.join(' | ')}
                 </div>
             </div>
             <div className="bucket-product-item-counter">
