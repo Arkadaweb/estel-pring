@@ -20,8 +20,8 @@ import {useRouter} from "next/router";
 const {Option} = Select;
 
 
-const compareAttributes = (arr1, arr2) =>
-    arr1.every(attr => arr2.some(attr2 => attr.id === attr2.id && attr.option === attr2.option));
+const compareAttributes = (arr1: any, arr2: any) =>
+    arr1.every((attr: any) => arr2.some((attr2: any) => attr.id === attr2.id && attr.option === attr2.option));
 
 const ProductContent: FC<PropsWithChildren<any>> = ({
                                                         product,
@@ -39,13 +39,13 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
         option: item?.options?.[0]
     }))
 
-    const mainVariant = variations.find(item => compareAttributes(item.attributes, initVariantOptions));
+    const mainVariant = variations.find((item: any) => compareAttributes(item.attributes, initVariantOptions));
 
 
     const [mainImage, setMainImage] = useState(mainVariant?.image?.src || product?.images?.[0]?.src || null)
     const [selectedType, setSelectedType] = useState(initVariantOptions || [])
 
-    const selectedProduct = variations.find(item => compareAttributes(item.attributes, selectedType)) || product
+    const selectedProduct = variations.find((item: any)  => compareAttributes(item.attributes, selectedType)) || product
 
     const {products} = useAppSelector((state: any) => state.bucket)
     const dispatch = useAppDispatch()
@@ -154,7 +154,7 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
     }
 
     useEffect(() => {
-        const currentVariant = variations.find(item => compareAttributes(item.attributes, selectedType));
+        const currentVariant = variations.find((item: any)  => compareAttributes(item.attributes, selectedType));
         setMainImage(currentVariant?.image?.src || product?.images?.[0]?.src)
     }, [selectedType, product])
 
