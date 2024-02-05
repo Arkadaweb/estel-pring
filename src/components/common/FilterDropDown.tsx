@@ -19,7 +19,7 @@ const FilterDropDown: FC<PropsWithChildren<any>> = ({
 
     const [mainFilter, setMainFilter] = useState(brands)
 
-    const [value, setValue] = React.useState([sort?.min_price || 0, sort?.max_price || 5000]);
+    const [value, setValue] = React.useState([sort?.min_price || 0, sort?.max_price || 150000]);
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isPlus, setIsPlus] = useState(false);
@@ -138,7 +138,7 @@ const FilterDropDown: FC<PropsWithChildren<any>> = ({
                 </div>
                 <Slider
                     min={0}
-                    max={10000}
+                    max={150000}
                     onChange={setValue}
                     value={value}
                     defaultValue={value}

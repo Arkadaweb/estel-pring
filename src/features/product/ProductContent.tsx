@@ -261,7 +261,7 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
                                         suffixIcon={<SelectorArrow/>}
                                         defaultValue={item?.options[0]}
                                         style={{
-                                            width: 200
+                                            width: '50%'
                                         }}
                                     >
                                         {
