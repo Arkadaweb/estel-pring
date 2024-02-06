@@ -21,11 +21,13 @@ const IntroSection: FC<PropsWithChildren<any>> = ({
     let slider: any;
 
     const settings = {
-        infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         dots: false,
+        autoplay: true,
+        autoplaySpeed: 6000,
         responsive: [
             {
                 breakpoint: 1024,
