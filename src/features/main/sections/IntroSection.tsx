@@ -77,13 +77,17 @@ const IntroSection: FC<PropsWithChildren<any>> = ({
                                         {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod*/}
                                         {/*tempor incididunt ut labore et dolore magna aliqua.*/}
                                     </p>
-                                    <ButtonCustom
-                                        onPress={() => consultationU(true)}
-                                        padding={'18px 30px'}
-                                        text={'Заказать звонок'}
-                                        borderRadius={50}
-                                        fontWeight={500}
-                                    />
+                                    <div className="slide-item-inner-content-button">
+                                        <ButtonCustom
+                                            onPress={() => consultationU(true)}
+                                            padding={'18px 30px'}
+                                            text={'Заказать звонок'}
+                                            borderRadius={50}
+                                            fontWeight={500}
+                                        />
+                                    </div>
+                                    <div className="slide-item-inner-content-bck">
+                                    </div>
                                 </div>
                             </div>
                         </div>
