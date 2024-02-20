@@ -279,7 +279,7 @@ const ProductContent: FC<PropsWithChildren<any>> = ({
                             <div
                                 className="product-content-main-info-price"
                             >
-                                от {' '}
+                                {' '}
                                 {
                                     isHasInBucket?.count
                                         ? Number(isHasInBucket?.count) * Number(selectedProduct?.price)

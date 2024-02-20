@@ -61,7 +61,7 @@ const ProductItem: FC<PropsWithChildren<any>> = ({
                 <div
                     className="product-item-bottom-price"
                 >
-                    от {item?.price} ₽
+                   {item?.price} ₽
                 </div>
                 <div className="product-item-bottom-button">
 

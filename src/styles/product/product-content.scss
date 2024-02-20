@@ -34,6 +34,10 @@
                 overflow: hidden;
                 border: 1px solid $grey2;
 
+                img{
+                    object-fit: contain;
+                }
+
                 &:hover{
                     border: 1px solid $blueWhite;
                     cursor: pointer;
@@ -87,6 +91,10 @@
             border: 1px solid $grey2;
             border-radius: 20px;
             overflow: hidden;
+
+            img{
+                object-fit: contain;
+            }
 
             @media(max-width: 1024px) {
                 display: flex;
@@ -247,13 +255,28 @@
             line-height: 46px;
             color: $grey;
         }
+
         p{
             margin-top: 30px;
             font-size: 18px;
             font-weight: 300;
             line-height: 22px;
             color: $grey8;
+
+
         }
+        h2{
+            margin: 15px 0 !important;
+        }
+
+        ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            li{
+                list-style: inside;
+            }
+        }
+
     }
 
     &-common{
