@@ -8,12 +8,12 @@ export const configureTransport = (token = null) => {
 
     const options: any =  token  ?
         {
-            baseURL: process.env.HOST_SERVER,
+            baseURL: 'https://arkadawebstudio.ru',
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         }
-        : { baseURL: process.env.HOST_SERVER };
+        : { baseURL: 'https://arkadawebstudio.ru' };
     transport = axios.create(options);
 
     return transport;
