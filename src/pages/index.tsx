@@ -19,8 +19,6 @@ const Home: FC<PropsWithChildren<any>> = ({
                                               meta
                                           }) => {
 
-    console.log(brands)
-
     return (
         <Meta title={'Главная'} metaData={meta}>
             <MainLayout
